@@ -1,0 +1,116 @@
+<h4 class="ui dividing header">Dashboard</h4>
+<div class="ui horizontal segments">
+  <div class="ui segment">
+    <h5 class="ui dividing header">Sales</h5>
+    <p>
+      Month to date: ${{payload.salesMTD}}<br>
+      Quarter to date: ${{payload.salesQTD}}
+      <hr>
+      Last month: ${{payload.salesPrevMonth}}<br>
+    </p>
+  </div>
+  <div class="ui segment">
+    <h5 class="ui dividing header">Purchases</h5>
+    <p>
+      Month to Date : ${{payload.purchasesMTD}}<br>
+      Current Outstanding: $ {{payload.totalOutstanding}}
+      <hr>
+      Allowable (75%): ${{payload.allowable}}<br>
+      Remain budget: ${{payload.remaining}}<br>
+    </p>
+  </div>
+  <div class="ui segment">
+    <h5 class="ui dividing header">Inventory</h5>
+    <p>
+      Total Outstanding: ${{payload.totalOutstanding}} <br>
+      Total : $ - 
+    </p>
+  </div>
+</div>
+
+<h4 class="ui dividing header">Sales by month</h4>
+<table class="ui compact table">
+  <thead>
+    <tr>
+      <th>2022</th>
+      {{#each payload.salesBreakdown.first}}
+        <th>{{this.mon}}</th>
+      {{/each}}
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="collapsing">Online</td>
+      {{#each payload.salesBreakdown.first}}
+        <td>{{this.online}}</td>
+      {{/each}}
+    </tr>
+    <tr>
+      <td class="collapsing">Retail</td>
+      {{#each payload.salesBreakdown.first}}
+        <td>{{this.retail}}</td>
+      {{/each}}
+    </tr>
+    <tr>
+      <td class="collapsing">Wholesale</td>
+      {{#each payload.salesBreakdown.first}}
+        <td>{{this.wholesale}}</td>
+      {{/each}}
+    </tr>
+    <tr>
+      <td class="collapsing">Total</td>
+      {{#each payload.salesBreakdown.first}}
+        <td>{{this.total}}</td>
+      {{/each}}
+    </tr>
+    <tr>
+      <td class="collapsing">Purchases</td>
+      {{#each payload.salesBreakdown.first}}
+        <td>{{this.purchases}}</td>
+      {{/each}}
+    </tr>
+  </tbody>
+</table>
+
+<table class="ui compact table">
+  <thead>
+    <tr>
+      <th>2021</th>
+      {{#each payload.salesBreakdown.second}}
+        <th>{{this.mon}}</th>
+      {{/each}}
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="collapsing">Online</td>
+      {{#each payload.salesBreakdown.second}}
+        <td>{{this.online}}</td>
+      {{/each}}
+    </tr>
+    <tr>
+      <td class="collapsing">Retail</td>
+      {{#each payload.salesBreakdown.second}}
+        <td>{{this.retail}}</td>
+      {{/each}}
+    </tr>
+    <tr>
+      <td class="collapsing">Wholesale</td>
+      {{#each payload.salesBreakdown.second}}
+        <td>{{this.wholesale}}</td>
+      {{/each}}
+    </tr>
+    <tr>
+      <td class="collapsing">Total</td>
+      {{#each payload.salesBreakdown.second}}
+        <td>{{this.total}}</td>
+      {{/each}}
+    </tr>
+    <tr>
+      <td class="collapsing">Purchases</td>
+      {{#each payload.salesBreakdown.second}}
+        <td>{{this.purchases}}</td>
+      {{/each}}
+    </tr>
+  </tbody>
+</table>

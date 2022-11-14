@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>SAMIMA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css">
+  <link rel="stylesheet" type="text/css" href="./stylesheets/style.css" />
+</head>
+
+<body>
+  <div class="ui container" id="app">
+    <div class="ui menu">
+      <a href="/" class="item">SAMIMA</a>
+      <a href="/sales" class="item">Sales</a>
+      <a href="/purchases/new" class="item">Inventory</a>
+      <div class="ui dropdown item">
+        Reports
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          <a href="/reports" class="item">Dashboard</a>
+          <div class="divider"></div>
+          <a href="/sales/search" class="item">Daily Sales</a>
+          <div class="item">COGS</div>
+          <a href="/reports/invlevel" class="item">Stock levels</a>
+          <div class="divider"></div>
+          <a class="item">Custom report</a>
+        </div>
+      </div>
+      <a href="#" class="item">Delivery orders</a>
+      <div class="right menu">
+        <a href="/logout" class="item">Logout</a>
+      </div>
+    </div>
+    {{{ body }}}
+  </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js"></script>
+<script src="/javascripts/script.js"></script>
+</html>

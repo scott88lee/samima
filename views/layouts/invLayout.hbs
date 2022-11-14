@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>SAMIMA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
+</head>
+
+<body>
+  <div class="ui container" id="app">
+    <div class="ui menu">
+      <a href="/" class="item">SAMIMA</a>
+      <a href="/sales" class="item">Sales</a>
+      <a href="/purchases/new" class="active item">Inventory</a>
+      <a href="/reports" class="item">Reports</a>
+      <a class="item">Delivery Orders</a>
+      <div class="right menu">
+        <a href="/logout" class="item">Logout</a>
+      </div>
+    </div>
+    
+    <div class="ui grid">
+      <div class="three wide column">
+        {{> inventoryMenu }}
+      </div>
+      <div class="thirteen wide stretched column">
+        <div class="ui segment">
+          {{{ body }}}
+        </div>
+      </div>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.js"></script>
+<script src="/javascripts/script.js"></script>
+<script src="/javascripts/purchase.js"></script>
+
+</html>

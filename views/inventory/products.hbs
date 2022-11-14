@@ -1,0 +1,125 @@
+<h4 class="ui dividing header">Product list</h4>
+<div class="ui accordion">
+  <div class="title">
+    <div class="ui menu">
+      <div class="item">
+        Add Product<i class="dropdown icon"></i>
+      </div>
+      <div class="right menu">
+        <div class="item">
+          <div class="ui left icon input">
+            <i class="search icon"></i>
+            <input autocomplete="off" class="focus" id="searchInput" type="text" placeholder="Search" onkeyup="searchTable()">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="ui segment">
+
+      <form class="ui form" action="/products/new" method="post">
+        <h4 class="ui dividing header">Add new product</h4>
+        <div class="three fields">
+          <div class="field">
+            <label>SKU</label>
+            <input autocomplete="off" type="text" name="sku" tabindex="1" placeholder="UPC8838B" required>
+          </div>
+          <div class="field">
+            <label>Main Category</label>
+            <div class="ui selection dropdown">
+              <input type="hidden" name="cat">
+              <i class="dropdown icon"></i>
+              <div class="default text">Category</div>
+              <div class="menu">
+                <div class="item" data-ref="ag" data-value="acoustic">Acoustic</div>
+                <div class="item" data-ref="eg" data-value="electric">Electric</div>
+                <div class="item" data-ref="uk" data-value="ukulele">Ukulele</div>
+                <div class="item" data-ref="pa" data-value="proaudio">Pro-Audio</div>
+                <div class="item" data-ref="ac" data-value="accessories">Accessories</div>
+                <div class="item" data-ref="kb" data-value="keyboard">Keyboard</div>
+                <div class="item" data-ref="dr" data-value="drums">Drums</div>
+                <div class="item" data-ref="sv" data-value="services">Services</div>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <label>&nbsp;</label>
+            <div class="ui toggle checkbox" style="margin-top:8px">
+              <input autocomplete="off" type="checkbox" value="true" name="physical_item" tabindex="2" class="active" checked>
+              <label>Physical item</label>
+            </div>
+          </div>
+        </div>
+        <div class="three fields">
+          <div class="field">
+            <label>Brand</label>
+            <input autocomplete="off" type="text" name="brand" tabindex="2" placeholder="Yamaha" required>
+          </div>
+          <div class="field">
+            <label>Model</label>
+            <input autocomplete="off" type="text" name="model" tabindex="2" placeholder="THR10-II Wireless" required>
+          </div>
+          <div class="field">
+            <label>S$ MSRP</label>
+            <input autocomplete="off" type="number" min="0.01" step="0.01" name="msrp" tabindex="2" placeholder="599" required>
+          </div>
+          <div class="field">
+            <label>S$ MAP</label>
+            <input autocomplete="off" type="number" min="0.01" step="0.01" name="map" tabindex="2" placeholder="539.50" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Product Description</label>
+          <div class="field">
+            <input autocomplete="off" type="text" name="product_desc" tabindex="2"
+              placeholder="20W Portable Desktop Amplifier with Wireless Reciever" required>
+          </div>
+        </div>
+        <button class="ui button" tabindex="1">Add Product</button>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="ex1">
+<table class="ui striped compact small unstackable table">
+  <thead>
+    <tr>
+      <th>&nbsp;</th>
+      <th>SKU</th>
+      <th>Brand</th>
+      <th>Model</th>
+      <th>Description</th>
+      <th>MSRP</th>
+      <th>MAP</th>
+      <th>Init</th>
+    </tr>
+  </thead>
+  <tbody id="productTable">
+    {{#each payload}}
+    <tr>
+      <td class="collapsing"><a href="/products/{{this.product_id}}/edit"><i class="edit icon"></i></a></td>
+      <td><a href="/products/{{this.product_id}}">{{this.sku}}</a></td>
+      <td>{{this.brand}}</td>
+      <td>{{this.model}}</td>
+      <td><span>{{this.product_desc}}</span></td>
+      <td>{{this.msrp}}</td>
+      <td>{{this.map}}</td>
+      <td>{{this.prod_init}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+</div>
+
+<style>
+  div.ex1 {
+  width: 100%;
+  height: 480px;
+  overflow-y: scroll;
+}
+</style>

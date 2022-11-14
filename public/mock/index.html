@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>SAMIMA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="stylesheet" type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="./stylesheets/style.css" />
+  </head>
+
+  <body>
+    <div class="ui top fixed menu">
+      <a id="menu" class="icon item">
+        <i class="sidebar icon"></i>
+      </a>
+      <a class="item">SAMIMA</a>
+      <a class="item" href="#">Something</a>
+      
+      <div class="right floated menu">
+        <a class="item">Logout</a>
+      </div>
+    </div>
+    
+    <div id="sidebar" class="ui thin sidebar vertical labeled menu">
+        <div class="item">&nbsp;</div>
+        <a id="transactions" class="item" @click="transactions()">
+          Transaction List
+        </a>
+        <a id="funding" class="item" @click="funding()">
+          Funding Report
+        </a>
+        <a id="billing" class="item" @click="billing()">
+          Billing Report
+        </a>
+        <div class="item" v-if="admin">
+          <router-link to="/deep">Deep Query</router-link>
+        </div>
+        <div class="item" v-if="admin">
+          <router-link to="/tools">Dev Tools</router-link>
+        </div>
+      </div>
+      
+      <div class="pusher">
+        main view
+        asd
+        asd
+        asd
+        asd
+        asd
+        asdasdsadfasdf
+        SDFSDf
+
+      </div>
+      
+    <script
+    src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
+    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<h4 class="ui dividing header">Cost of goods sold:</h4>
+
+<form action="/reports/cogs" method="POST" id="cogs">
+<div class="ui form">
+  <div class="fields">
+
+    <div class="field">
+      <label>Start date</label>
+      <div class="ui calendar" id="dateSelect">
+        <div class="ui input left icon">
+          <i class="calendar icon"></i>
+          <input autocomplete="off" type="text" name="start" placeholder="Date/Time" onchange="validate()" required>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <label>End date</label>
+      <div class="ui calendar" id="dateEnd">
+        <div class="ui input left icon">
+          <i class="calendar icon"></i>
+          <input autocomplete="off" type="text" name="end" onchange="validate()" placeholder="Date/Time" required>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+    </div>
+  </div>
+  <button class="ui button">Search</button>
+</div>
+</form>
+
+<div class="ui segment">
+
+<h4 class="ui dividing header">Cost of goods sold for: {{dateRange}}</h4>
+Total sales for period: {{this.totalSales}}<br>
+Cost of goods sold: {{this.cogs}}<br>
+Total gross profit: {{this.grossProfit}}
+</div>

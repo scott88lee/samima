@@ -1,0 +1,84 @@
+<h4 class="ui dividing header">
+  Search Criteria
+</h4>
+
+<form action="/reports/topsellers" method="POST">
+<div class="ui form">
+  <div class="fields">
+
+    <div class="field">
+      <label>Min $MAP</label>
+      <div class="ui input">
+        <div class="ui input left icon">
+          <i class="dollar sign icon"></i>
+          <input autocomplete="off" type="number" name="map" placeholder="50" required>
+        </div>
+      </div>
+    </div>
+    
+    <div class="field">
+      <label>Category</label>
+      <div class="ui selection dropdown">
+        <input type="hidden" name="category">
+        <i class="dropdown icon"></i>
+        <div class="default text">All</div>
+        <div class="menu">
+          <div class="item" data-value="nocat">No category</div>
+          <div class="item" data-value="acoustic">Acoustic</div>
+          <div class="item" data-value="electric">Electric</div>
+          <div class="item" data-value="ukulele">Ukulele</div>
+          <div class="item" data-value="proaudio">Pro-Audio</div>
+          <div class="item" data-value="accessories">Accessories</div>
+          <div class="item" data-value="keyboard">Keyboard</div>
+          <div class="item" data-value="drums">Drums</div>
+          <div class="item" data-value="services">Services</div>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <label>Duration</label>
+      <div class="ui selection dropdown">
+        <input type="hidden" name="duration">
+        <i class="dropdown icon"></i>
+        <div class="default text">All time</div>
+        <div class="menu">
+          <div class="item" data-value="30">30 Days</div>
+          <div class="item" data-value="60">60 Days</div>
+          <div class="item" data-value="90">90 Days</div>
+          <div class="item" data-value="180">180 Days</div>
+          <div class="item" data-value="alltime">All time</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="ui button">Search</button>
+</div>
+</form>
+
+
+<h4 class="ui dividing header">
+  Top sellers
+</h4>
+
+<table class="ui table">
+  <thead>
+    <tr>
+      <th>PID</th>
+      <th>SKU</th>
+      <th>Brand</th>
+      <th>Model</th>
+      <th>Sold</th>
+    </tr>
+  </thead>
+  <tbody>
+      {{#each product}}
+    <tr>
+      <td class="collapsing">{{this.product_id}}</td>
+      <td class="collapsing">{{this.sku}}</td>
+      <td class="collapsing">{{this.brand}}</td>
+      <td>{{this.model}}</td>
+      <td>{{this.sold}}</td>
+    </tr>
+      {{/each}}
+  </tbody>
+</table>

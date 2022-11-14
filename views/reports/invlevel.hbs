@@ -1,0 +1,31 @@
+<h4 class="ui dividing header">
+  Inventory levels as of {{date}}
+</h4>
+
+<div id="scroll-container" style="height: 500px;">
+  <div id="scroll-content"   style="height:500px;overflow: auto;">
+
+<table class="ui table">
+  <thead>
+    <tr>
+      <th>SKU</th>
+      <th>Brand</th>
+      <th>Model</th>
+      <th>Description</th>
+      <th>Stock</th>
+    </tr>
+  </thead>
+  <tbody>
+      {{#each inv}}
+    <tr>
+      <td class="collapsing">{{this.sku}}</td>
+      <td class="collapsing">{{this.brand}}</td>
+      <td>{{this.model}}</td>
+      <td>{{this.product_desc}}</td>
+      <td>{{this.total_qty}}</td>
+    </tr>
+      {{/each}}
+  </tbody>
+</table>
+</div>
+  </div>

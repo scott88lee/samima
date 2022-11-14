@@ -1,0 +1,25 @@
+<div class="ui segment">
+  <form action="/register" method="POST">
+    <div class="ui two column centered grid">
+      <div class="column">
+        {{message}} {{#if message}}<br> {{/if}}
+        <h3 class="ui dividing header">New user sign-up</h3>
+        <div class="ui form">
+          <label>Username</label>
+          <div class="field">
+            <input type="text" name="username" required>
+          </div>
+          <label>Email</label>
+          <div class="field">
+            <input type="email" name="email" required>
+          </div>
+          <label>Password</label>
+          <div class="field">
+            <input type="password" name="password" required>
+          </div>
+        </div><br>
+        <button class="ui button">Register</button>
+      </div>
+    </div>
+  </form>
+</div>

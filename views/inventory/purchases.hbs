@@ -1,0 +1,97 @@
+<h4 class="ui dividing header">Search</h4>
+
+<form action="/purchases/search" method="POST" id="pur_search">
+<div class="ui form">
+  <div class="fields">
+
+    <div class="field">
+      <label>Start date</label>
+      <div class="ui calendar" id="dateSelect">
+        <div class="ui input left icon">
+          <i class="calendar icon"></i>
+          <input autocomplete="off" type="text" name="start" placeholder="Date/Time" onchange="validate()" required>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <label>End date</label>
+      <div class="ui calendar" id="dateEnd">
+        <div class="ui input left icon">
+          <i class="calendar icon"></i>
+          <input autocomplete="off" type="text" name="end" onchange="validate()" placeholder="Date/Time" required>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <label>Search by SKU</label>
+      <input autocomplete="off" name="sku" type="text" placeholder="479023563">
+    </div>
+  </div>
+  <button class="ui button">Search</button>
+</div>
+</form>
+
+<h4 class="ui dividing header">Past purchases {{#if dateRange}} for {{dateRange}}{{/if}}
+  <p style="float:right">Grand total: ${{this.total}}</p>
+</h4>
+
+{{#each purchase}}
+<div class="ui accordion">
+  <div class="title">
+    <table class="ui fluid celled table">
+      <thead>
+        <tr>
+          <th class="collapsing">
+            <i class="dropdown icon"></i>
+          </th>
+          <th class="left collapsing">{{this.date}}</th>
+          <th class="left collapsing">{{this.supplier}} invoice: {{this.inv_no}}</th>
+          <th class="right aligned">Credit: {{#if this.credit}}<i class="check icon"></i>{{else}}<i
+              class="x icon"></i>{{/if}} Paid: {{#if this.paid}}<i class="check icon"></i>{{else}}<i
+              class="x icon"></i>{{/if}}</th>
+          <th class="right aligned collapsing">Total: $ {{this.total}}
+          </th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+  <div class="content">
+    <table class="ui celled table" id="bill">
+      <thead>
+        <tr>
+          <th class="collapsing">SKU</th>
+          <th class="collapsing">Brand</th>
+          <th>Model</th>
+          <th class="collapsing">Quantity</th>
+          <th class="collapsing">Cost</th>
+          <th class="right collapsing">Sub-Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each items}}
+        <tr>
+          <td>{{this.sku}}</td>
+          <td class="collapsing">{{this.brand}}</td>
+          <td>{{this.model}}</td>
+          <td>{{this.qty}}</td>
+          <td>${{this.price}}</td>
+          <td class="right aligned">${{this.subtotal}}</td>
+        </tr>
+        {{/each}}
+      </tbody>
+      <tfoot>
+        <tr>
+          <th>{{#if this.pay_date}}Date paid{{/if}}</th>
+          <th>{{this.pay_date}}</th>
+          <th>{{#if this.pay_date}}{{this.pay_mode}} - {{this.pay_ref}}{{else}}{{#if this.paid}}Cash{{/if}}{{/if}}</th>
+          <th></th>
+          <th class="right aligned collasping">Total:</th>
+          <th class="right aligned collasping">${{this.total}}</th>
+        </tr>
+      </tfoot>
+    </table>
+
+  </div>
+</div>
+
+{{/each}}

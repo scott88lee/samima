@@ -1,0 +1,13 @@
+#scroll {
+    max-height: 400px;
+    overflow-y: scroll;
+  }
+
+#app {
+  margin-top: 10px;
+}
+
+.containerx {
+  width: 90%;
+  margin: 0 auto;
+}

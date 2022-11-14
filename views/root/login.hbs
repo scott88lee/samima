@@ -1,0 +1,22 @@
+<div class="ui segment">
+  <form action="/login" method="POST">
+    <div class="ui two column centered grid">
+      <div class="column">
+        {{message}} {{#if message}}<br> {{/if}}
+        <h3 class="ui dividing header">Login</h3>
+        <div class="ui form">
+          <label>Username</label>
+          <div class="field">
+            <input type="text" name="username" required>
+          </div>
+          <label>Password</label>
+          <div class="field">
+            <input type="password" name="password" required>
+          </div>
+        </div><br>
+        <button class="ui button">Login</button>
+        <a href="/register">Signup</a>
+      </div>
+    </div>
+  </form>
+</div>

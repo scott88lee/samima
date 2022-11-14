@@ -1,0 +1,122 @@
+<h4 class="ui dividing header">Record invoice payments</h4>
+
+<form action="/purchases/outstanding" method="POST" id="paymentForm">
+{{!-- <form action="/test" method="POST" id="paymentForm"> --}}
+  <div class="ui form">
+    <div class="three fields">
+      <div class="field">
+        <label>Invoice number</label>
+        <div class="ui selection dropdown">
+          <input type="hidden" name="inv_id">
+          <i class="dropdown icon"></i>
+          <div class="default text">Invoice number</div>
+          <div class="menu">
+            {{#each invoice}}
+              <div class="item" data-value="{{this.inv_id}}">{{this.inv_no}}</div>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <label>Date of payment</label>
+        <div class="ui calendar" id="dateSelect">
+          <div class="ui input left icon">
+            <i class="calendar icon"></i>
+            <input autocomplete="off" type="text" name="pay_date" placeholder="Date/Time" required>
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <label>&nbsp;</label>
+        <div class="ui toggle checkbox" style="margin-top:8px">
+          <input type="checkbox" value="true" name="export" class="active">
+          <label>Export</label>
+        </div>
+      </div>
+      </div>
+      <div class="three fields">
+      <div class="field">
+        <label>Payment mode</label>
+        <input autocomplete="off" name="pay_mode" type="text" placeholder="OCBC Cheque">
+      </div>
+      <div class="field">
+        <label>Payment reference</label>
+        <input autocomplete="off" name="pay_ref" type="text" placeholder="Check no: 2236">
+      </div>
+      <div class="field">
+        <label>Discount percentage</label>
+        <input autocomplete="off" name="disc_pct" type="number" value=0 min=0 max=100 placeholder="2" required>
+      </div>
+    </div>
+    </div>
+
+    <button class="ui button">Submit</button>
+</form>
+
+
+<br>
+<h4 class="ui dividing header">Outstanding invoices
+   <p style="float:right">Grand total: ${{this.total}}
+   </p>
+</h4>
+{{#each invoice}}
+<div class="ui accordion">
+  <div class="title">
+    <table class="ui fluid celled table">
+      <thead>
+        <tr>
+          <th class="collapsing">
+            <i class="dropdown icon"></i>
+          </th>
+          <th class="left collapsing">{{this.date}}</th>
+          <th class="left collapsing">{{this.days}} days</th>
+          <th class="left collapsing">{{this.supplier}} invoice: {{this.inv_no}}</th>
+          <th class="right aligned">Credit: {{#if this.credit}}<i class="check icon"></i>{{else}}<i
+              class="x icon"></i>{{/if}} Paid: {{#if this.paid}}<i class="check icon"></i>{{else}}<i
+              class="x icon"></i>{{/if}}</th>
+          <th class="right aligned collapsing">Total: $ {{this.total}}
+          </th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+  <div class="content">
+    <table class="ui celled table" id="bill"> 
+      <thead>
+        <tr>
+          <th class="collapsing">SKU</th>
+          <th class="collapsing">Brand</th>
+          <th>Model</th>
+          <th class="collapsing">Quantity</th>
+          <th class="collapsing">Cost</th>
+          <th class="right collapsing">Sub-Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each items}}
+        <tr>
+          <td>{{this.sku}}</td>
+          <td>{{this.brand}}</td>
+          <td>{{this.model}}</td>
+          <td>{{this.qty}}</td>
+          <td>${{this.price}}</td>
+          <td class="right aligned">${{this.subtotal}}</td>
+        </tr>
+        {{/each}}
+      </tbody>
+      <tfoot>
+        <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th class="right aligned collasping">Total:</th>
+          <th class="right aligned collasping">${{this.total}}</th>
+        </tr>
+      </tfoot>
+    </table>
+
+  </div>
+</div>
+
+{{/each}}

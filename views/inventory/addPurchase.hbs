@@ -1,0 +1,121 @@
+<h4 class="ui dividing header">Inventory Purchase</h4>
+
+<form action="/purchases" method="POST" id="purchaseForm">
+  <div class="ui form">
+    <div class="fields">
+      <div class="field">
+        <label>Date</label>
+        <div class="ui calendar" id="dateSelect">
+          <div class="ui input left icon">
+            <i class="calendar icon"></i>
+            <input autocomplete="off" type="text" name="date" placeholder="Date/Time" required>
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <label>Supplier</label>
+        <div class="ui selection dropdown">
+          <input type="hidden" name="supplier">
+          <i class="dropdown icon"></i>
+          <div class="default text">Select Supplier</div>
+          <div class="menu">
+            {{#each supplier}}
+              <div class="item" data-value="{{this.id}}">{{this.name}}</div>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <label>Invoice Number</label>
+        <input autocomplete="off" name="invoice_number" type="text" placeholder="SA31123">
+      </div>
+      <div class="field">
+      </div>
+    </div>
+
+    <div class="ui button" onclick="showModal()">Add items</div>
+    &nbsp;
+    <div class="ui toggle checkbox">
+      <input type="checkbox" value="true" name="credit_purchase" tabindex="1" class="active" checked>
+      <label>Credit</label>
+    </div>
+    
+    <input type="hidden" id="payload" name="payload" value="">
+
+    <table class="ui striped table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>No:</th>
+          <th>SKU</th>
+          <th>Brand</th>
+          <th>Model</th>
+          <th>Qty</th>
+          <th>Unit Cost</th>
+          <th class="collapsing">Sub Total</th>
+        </tr>
+      </thead>
+      <tbody id="invoice">
+        {{!-- New Rows get added here --}}
+      </tbody>
+      <tfoot class="full-width">
+        <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th>Total: </th>
+          <th id="total"></th>
+        </tr>
+      </tfoot>
+    </table>
+
+    <div class="ui button" onclick="submitForm()">Submit</div>
+  </div>
+</form>
+
+<div class="ui active scrolling modal">
+  <div class="scrolling content">
+    <div class="ui menu">
+      <div class="item">
+        Product List
+      </div>
+      <div class="right menu">
+        <div class="item">
+          <div class="ui left icon input">
+            <i class="search icon"></i>
+            <input class="focus" id="searchInput" type="text" placeholder="Search" onkeyup="searchTable()">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="scroll">
+      <table class="ui striped compact small table">
+        <thead>
+          <tr>
+            <th>SKU</th>
+            <th>Brand</th>
+            <th>Model</th>
+            <th>Description</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="productTable">
+          {{#each products}}
+          <tr>
+            <td class="collapsing">{{this.sku}}</td>
+            <td class="collapsing">{{this.brand}}</td>
+            <td class="collapsing">{{this.model}}</td>
+            <td>{{this.product_desc}}</td>
+            <td><button
+                onclick="appendProduct('{{this.product_id}},{{this.sku}},{{this.brand}},{{this.model}}')">Add</button>
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

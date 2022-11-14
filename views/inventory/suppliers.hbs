@@ -1,0 +1,43 @@
+<form class="ui form" action="/suppliers" method="post">
+  <h4 class="ui dividing header">Add new supplier</h4>
+  <div class="field">
+    <div class="two fields">
+      <div class="field">
+        <label>Supplier Name</label>
+        <input autocomplete="off" class="focus" type="text" name="name" tabindex="1" placeholder="Yamaha" required>
+      </div>
+      <div class="field">
+        <label>Business Name</label>
+        <input autocomplete="off" type="text" name="business_name" tabindex="1" placeholder="Yamaha Music (Asia) Pte Ltd" required>
+      </div>
+    </div>
+  </div>
+  <div class="field">
+    <label>Business Address</label>
+    <div class="field">
+      <input autocomplete="off" type="text" name="address" tabindex="1" placeholder="#02-00, 202 Hougang Street 21, 228149"
+        required>
+    </div>
+  </div>
+  <button class="ui button" tabindex="1">Add Supplier</button>
+  {{#if message}}<span>{{message}}</span>{{/if}}
+</form>
+
+<table class="ui striped compact small table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Business name</th>
+      <th>Address</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each supplier}}
+    <tr>
+      <td>{{this.name}}</td>
+      <td>{{this.business_name}}</td>
+      <td>{{this.address}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
